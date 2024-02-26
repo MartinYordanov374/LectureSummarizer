@@ -23,7 +23,6 @@ def preprocess_data(fileContent):
     regex_tokenizer = RegexpTokenizer(r'\w+')
     punctuation_clean_sentences = [regex_tokenizer.tokenize(sentence) for sentence in cleaned_text]
     joined_punctuation_clean_sentences = [" ".join(punctuation_clean_sentence) for punctuation_clean_sentence in punctuation_clean_sentences]
-    print(joined_punctuation_clean_sentences[0])
 
     # lemmatize adjectives
     
@@ -34,4 +33,4 @@ def preprocess_data(fileContent):
     # lemmatize nouns (assuming you meant to lemmatize nouns)
     lemmatized_text_nouns = [' '.join([Lemmatizer.lemmatize(word, pos='n') for word in word_tokenize(sentence)]) for sentence in lemmatized_text_verbs]
 
-    return lemmatized_text_nouns
+    return [file_sentences, lemmatized_text_nouns]
