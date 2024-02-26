@@ -24,4 +24,4 @@ def preprocess_data(fileContent):
     lemmatized_text_verbs = [Lemmatizer.lemmatize(word, pos='v') for word in lemmatized_text_adverbs if str.isalpha(word)]
     lemmatized_text_nouns = [Lemmatizer.lemmatize(word, pos='v') for word in lemmatized_text_verbs if str.isalpha(word)]
 
-    return lemmatized_text_nouns
+    return " ".join(lemmatized_text_nouns)
