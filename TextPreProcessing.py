@@ -1,6 +1,6 @@
 import nltk
 from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import word_tokenize, sent_tokenize
 import contractions
 from nltk.stem import WordNetLemmatizer
 
@@ -8,10 +8,15 @@ Lemmatizer = WordNetLemmatizer()
 def preprocess_data(fileContent):
     # get text input
     file_content = fileContent
+    # extract sentences
+    file_sentences = sent_tokenize(file_content)
+    
+    # convert everything to lower case
+    lowercase = [sentence.lower() for sentence in file_sentences]
 
     # expand contraction words
-
-    no_contractions_content = contractions.fix(file_content)
+    
+    no_contractions_content = contractions.fix(" ".join(lowercase))
 
     # tokenize data
     tokenized_file_content = word_tokenize(no_contractions_content)
