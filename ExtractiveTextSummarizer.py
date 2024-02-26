@@ -8,5 +8,8 @@ file_content = 'This is a sample text that will be retrieved from the pdf later 
 tokenized_file_content = word_tokenize(file_content)
 
 # get rid of stopwords
+
+cleaned_text = [clean_word for clean_word in tokenized_file_content if clean_word not in stopwords.words('english')]
+
 # expand contraction words
 # lemmatize words
